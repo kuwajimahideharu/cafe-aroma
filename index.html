@@ -6,10 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>こだわり自家焙煎カフェ | Cafe Aroma</title>
     <meta name="description" content="厳選された豆を自家焙煎。至福の一杯をお届けするこだわりのカフェです。">
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="canonical" href="https://kuwajimahideharu.github.io/cafe-aroma/">
+
+    <!-- OGP (Open Graph Protocol) -->
+    <meta property="og:title" content="こだわり自家焙煎カフェ | Cafe Aroma">
+    <meta property="og:description" content="厳選された豆を自家焙煎。至福の一杯をお届けするこだわりのカフェです。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kuwajimahideharu.github.io/cafe-aroma/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:site_name" content="Cafe Aroma">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="こだわり自家焙煎カフェ | Cafe Aroma">
+    <meta name="twitter:description" content="厳選された豆を自家焙煎。至福の一杯をお届けするこだわりのカフェです。">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80">
+
+    <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
 
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,23 +57,156 @@
         }
     </script>
     <style>
-        /* Custom styles if needed */
         .hero-bg {
             background-color: #4a3b32;
-            background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80');
-            /* Unsplash placeholder */
+            background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1600&q=75');
             background-size: cover;
             background-position: center;
             background-blend-mode: overlay;
         }
+
+        /* Skip link */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 0;
+            z-index: 100;
+            padding: 0.5rem 1rem;
+            background: #4a3b32;
+            color: #fff;
+            transition: top 0.2s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Focus visible indicator */
+        *:focus-visible {
+            outline: 2px solid #c9a66b;
+            outline-offset: 2px;
+        }
+
+        /* Scroll reveal animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Gallery grid */
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+        .gallery-item img {
+            transition: transform 0.6s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Review card */
+        .review-stars {
+            color: #c9a66b;
+            letter-spacing: 2px;
+        }
+
+        /* Form loading state */
+        .btn-loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        .spinner {
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
+
+    <!-- JSON-LD 構造化データ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CafeOrCoffeeShop",
+        "name": "Cafe Aroma",
+        "description": "厳選された豆を自家焙煎。至福の一杯をお届けするこだわりのカフェです。",
+        "url": "https://kuwajimahideharu.github.io/cafe-aroma/",
+        "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80",
+        "telephone": "03-1234-5678",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "神南1-1-1",
+            "addressLocality": "渋谷区",
+            "addressRegion": "東京都",
+            "postalCode": "150-0000",
+            "addressCountry": "JP"
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Thursday", "Friday"],
+                "opens": "08:00",
+                "closes": "20:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Saturday", "Sunday"],
+                "opens": "09:00",
+                "closes": "21:00"
+            }
+        ],
+        "servesCuisine": "コーヒー",
+        "priceRange": "¥400〜¥850",
+        "hasMenu": {
+            "@type": "Menu",
+            "hasMenuSection": [
+                {
+                    "@type": "MenuSection",
+                    "name": "Coffee & Drinks",
+                    "hasMenuItem": [
+                        { "@type": "MenuItem", "name": "オリジナルブレンド", "offers": { "@type": "Offer", "price": "550", "priceCurrency": "JPY" } },
+                        { "@type": "MenuItem", "name": "本日のシングルオリジン", "offers": { "@type": "Offer", "price": "650", "priceCurrency": "JPY" } },
+                        { "@type": "MenuItem", "name": "自家製カフェラテ", "offers": { "@type": "Offer", "price": "600", "priceCurrency": "JPY" } },
+                        { "@type": "MenuItem", "name": "水出しアイスコーヒー", "offers": { "@type": "Offer", "price": "600", "priceCurrency": "JPY" } }
+                    ]
+                },
+                {
+                    "@type": "MenuSection",
+                    "name": "Food & Sweets",
+                    "hasMenuItem": [
+                        { "@type": "MenuItem", "name": "自家製チーズケーキ", "offers": { "@type": "Offer", "price": "500", "priceCurrency": "JPY" } },
+                        { "@type": "MenuItem", "name": "厚切りバタートースト", "offers": { "@type": "Offer", "price": "450", "priceCurrency": "JPY" } },
+                        { "@type": "MenuItem", "name": "アボカドとサーモンのサンド", "offers": { "@type": "Offer", "price": "850", "priceCurrency": "JPY" } },
+                        { "@type": "MenuItem", "name": "クラシックプリン", "offers": { "@type": "Offer", "price": "400", "priceCurrency": "JPY" } }
+                    ]
+                }
+            ]
+        }
+    }
+    </script>
 </head>
 
 <body class="bg-brand-bg text-brand-dark font-sans leading-relaxed">
 
+    <!-- Skip Link -->
+    <a href="#main-content" class="skip-link">コンテンツへスキップ</a>
+
     <!-- Header -->
     <header class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300"
-        id="header">
+        id="header" role="banner">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-serif font-bold tracking-wider">
                 <a href="#" class="flex items-center gap-2">
@@ -65,7 +215,7 @@
             </h1>
 
             <!-- Desktop Nav -->
-            <nav class="hidden md:flex gap-8 text-sm font-medium tracking-wide">
+            <nav class="hidden md:flex gap-8 text-sm font-medium tracking-wide" aria-label="メインナビゲーション">
                 <a href="#concept" class="hover:text-brand-accent transition-colors">こだわり</a>
                 <a href="#menu" class="hover:text-brand-accent transition-colors">メニュー</a>
                 <a href="#shop" class="hover:text-brand-accent transition-colors">店舗情報</a>
@@ -73,8 +223,8 @@
             </nav>
 
             <!-- Mobile Menu Button -->
-            <button id="menu-btn" class="md:hidden p-2 focus:outline-none" aria-label="メニューを開く">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button id="menu-btn" class="md:hidden p-2" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
                     </path>
                 </svg>
@@ -82,17 +232,17 @@
         </div>
 
         <!-- Mobile Nav Menu -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-md py-4">
+        <nav id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-md py-4" aria-label="モバイルナビゲーション">
             <div class="flex flex-col items-center gap-4 text-base font-medium">
                 <a href="#concept" class="mobile-link hover:text-brand-accent">こだわり</a>
                 <a href="#menu" class="mobile-link hover:text-brand-accent">メニュー</a>
                 <a href="#shop" class="mobile-link hover:text-brand-accent">店舗情報</a>
                 <a href="#contact" class="mobile-link hover:text-brand-accent">お問い合わせ</a>
             </div>
-        </div>
+        </nav>
     </header>
 
-    <main class="flex flex-col">
+    <main id="main-content" class="flex flex-col">
 
         <!-- Hero Section -->
         <section
@@ -113,24 +263,28 @@
         </section>
 
         <!-- Concept Section -->
-        <section id="concept" class="order-3 md:order-2 py-20 md:py-32 px-4">
+        <section id="concept" class="order-2 py-20 md:py-32 px-4">
             <div class="container mx-auto max-w-5xl">
-                <div class="text-center mb-16">
+                <div class="text-center mb-16 scroll-reveal">
                     <span class="text-brand-accent font-serif tracking-widest text-sm block mb-2">CONCEPT</span>
                     <h2 class="text-3xl md:text-4xl font-serif font-bold">私たちのこだわり</h2>
                     <div class="w-12 h-0.5 bg-brand-accent mx-auto mt-6"></div>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="order-2 md:order-1 space-y-6 leading-relaxed text-gray-700">
+                <div class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
+                    <div class="order-2 md:order-1 space-y-8 font-serif text-brand-dark/80 text-lg tracking-wide leading-loose">
                         <p>
-                            Cafe Aromaでは、世界中から厳選した豆を使用し、店内で毎日丁寧に焙煎しております。<br>
-                            豆本来の個性を最大限に引き出すため、気温や湿度に合わせて焙煎時間を秒単位で調整。
+                            Cafe Aromaでは、世界中から厳選した豆を使用し、<br class="hidden md:inline">
+                            店内で毎日丁寧に焙煎しております。<br>
+                            豆本来の個性を最大限に引き出すため、<br class="hidden md:inline">
+                            気温や湿度に合わせて焙煎時間を秒単位で調整。
                         </p>
-                        <p>
-                            「ただのコーヒーブレイクではなく、心安らぐ体験を」<br>
-                            そんな想いを込めて、一杯一杯ハンドドリップで淹れています。
-                        </p>
+                        <blockquote class="border-l-2 border-brand-accent pl-6 py-2 text-xl text-brand-dark/90">
+                            <span class="text-brand-accent text-2xl leading-none">"</span><br>
+                            ただのコーヒーブレイクではなく、<br>心安らぐ体験を<br>
+                            <span class="text-brand-accent text-2xl leading-none">"</span>
+                            <span class="block mt-3 text-sm tracking-widest text-brand-light font-sans">— そんな想いを込めて、一杯一杯ハンドドリップで淹れています。</span>
+                        </blockquote>
                         <p>
                             木の温もりを感じる店内で、日常の喧騒を忘れて<br>
                             ゆったりとした時間をお過ごしください。
@@ -138,97 +292,135 @@
                     </div>
                     <div
                         class="order-1 md:order-2 h-80 bg-gray-200 rounded-lg overflow-hidden shadow-lg relative group">
-                        <!-- Placeholder or Generated Image -->
-                        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80"
-                            alt="ハンドドリップの様子"
+                        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=800&q=75"
+                            alt="Cafe Aromaでのハンドドリップコーヒーの抽出の様子"
+                            loading="lazy"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Menu Section -->
-        <section id="menu" class="order-2 md:order-3 py-20 bg-white">
+        <!-- Gallery Section -->
+        <section id="gallery" class="order-3 py-20 bg-white">
             <div class="container mx-auto max-w-5xl px-4">
-                <div class="text-center mb-16">
+                <div class="text-center mb-16 scroll-reveal">
+                    <span class="text-brand-accent font-serif tracking-widest text-sm block mb-2">GALLERY</span>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold">店内の雰囲気</h2>
+                    <div class="w-12 h-0.5 bg-brand-accent mx-auto mt-6"></div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 scroll-reveal">
+                    <div class="gallery-item aspect-square shadow-md">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=500&q=75"
+                            alt="淹れたてのカプチーノ" loading="lazy" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item aspect-square shadow-md">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=500&q=75"
+                            alt="温かみのある店内の様子" loading="lazy" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item aspect-square shadow-md">
+                        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=500&q=75"
+                            alt="こだわりのコーヒー豆" loading="lazy" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item aspect-square shadow-md">
+                        <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=500&q=75"
+                            alt="美しいラテアート" loading="lazy" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item aspect-square shadow-md">
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=500&q=75"
+                            alt="自家製スイーツ" loading="lazy" class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item aspect-square shadow-md">
+                        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=500&q=75"
+                            alt="落ち着いたカウンター席" loading="lazy" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="order-4 py-20 bg-brand-bg">
+            <div class="container mx-auto max-w-5xl px-4">
+                <div class="text-center mb-16 scroll-reveal">
                     <span class="text-brand-accent font-serif tracking-widest text-sm block mb-2">MENU</span>
                     <h2 class="text-3xl md:text-4xl font-serif font-bold">メニュー</h2>
                     <div class="w-12 h-0.5 bg-brand-accent mx-auto mt-6"></div>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-16">
+                <div class="grid md:grid-cols-2 gap-8 scroll-reveal">
                     <!-- Drink Menu -->
-                    <div>
+                    <div class="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
                         <h3 class="text-xl font-serif font-bold mb-8 flex items-center gap-3">
                             <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
                             Coffee & Drinks
                         </h3>
-                        <ul class="space-y-6">
-                            <li class="flex justify-between border-b border-dashed border-gray-300 pb-2">
+                        <ul class="space-y-5">
+                            <li class="flex justify-between items-start border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
                                 <div>
                                     <h4 class="font-bold text-lg">オリジナルブレンド</h4>
-                                    <p class="text-sm text-gray-500">酸味と苦味のバランスが取れた一杯</p>
+                                    <p class="text-sm text-gray-600">酸味と苦味のバランスが取れた一杯</p>
                                 </div>
-                                <span class="font-serif text-lg">¥550</span>
+                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap ml-4">¥550</span>
                             </li>
-                            <li class="flex justify-between border-b border-dashed border-gray-300 pb-2">
+                            <li class="flex justify-between items-start border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
                                 <div>
                                     <h4 class="font-bold text-lg">本日のシングルオリジン</h4>
-                                    <p class="text-sm text-gray-500">日替わりで楽しむ世界のコーヒー</p>
+                                    <p class="text-sm text-gray-600">日替わりで楽しむ世界のコーヒー</p>
                                 </div>
-                                <span class="font-serif text-lg">¥650</span>
+                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap ml-4">¥650</span>
                             </li>
-                            <li class="flex justify-between border-b border-dashed border-gray-300 pb-2">
+                            <li class="flex justify-between items-start border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
                                 <div>
                                     <h4 class="font-bold text-lg">自家製カフェラテ</h4>
-                                    <p class="text-sm text-gray-500">濃厚なエスプレッソとミルク</p>
+                                    <p class="text-sm text-gray-600">濃厚なエスプレッソとミルク</p>
                                 </div>
-                                <span class="font-serif text-lg">¥600</span>
+                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap ml-4">¥600</span>
                             </li>
-                            <li class="flex justify-between border-b border-dashed border-gray-300 pb-2">
+                            <li class="flex justify-between items-start hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
                                 <div>
                                     <h4 class="font-bold text-lg">水出しアイスコーヒー</h4>
-                                    <p class="text-sm text-gray-500">8時間かけて抽出したクリアな味わい</p>
+                                    <p class="text-sm text-gray-600">8時間かけて抽出したクリアな味わい</p>
                                 </div>
-                                <span class="font-serif text-lg">¥600</span>
+                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap ml-4">¥600</span>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Food Menu -->
-                    <div>
+                    <div class="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
                         <h3 class="text-xl font-serif font-bold mb-8 flex items-center gap-3">
                             <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
                             Food & Sweets
                         </h3>
-                        <ul class="space-y-6">
-                            <li class="flex justify-between border-b border-dashed border-gray-300 pb-2">
+                        <ul class="space-y-5">
+                            <li class="flex justify-between items-start border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
                                 <div>
                                     <h4 class="font-bold text-lg">自家製チーズケーキ</h4>
-                                    <p class="text-sm text-gray-500">コーヒーとの相性抜群</p>
+                                    <p class="text-sm text-gray-600">コーヒーとの相性抜群</p>
                                 </div>
-                                <span class="font-serif text-lg">¥500</span>
+                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap ml-4">¥500</span>
                             </li>
-                            <li class="flex justify-between border-b border-dashed border-gray-300 pb-2">
+                            <li class="flex justify-between items-start border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
                                 <div>
                                     <h4 class="font-bold text-lg">厚切りバタートースト</h4>
-                                    <p class="text-sm text-gray-500">国産小麦使用、外はサクッと中はふんわり</p>
+                                    <p class="text-sm text-gray-600">国産小麦使用、外はサクッと中はふんわり</p>
                                 </div>
-                                <span class="font-serif text-lg">¥450</span>
+                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap ml-4">¥450</span>
                             </li>
-                            <li class="flex justify-between border-b border-dashed border-gray-300 pb-2">
+                            <li class="flex justify-between items-start border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
                                 <div>
                                     <h4 class="font-bold text-lg">アボカドとサーモンのサンド</h4>
-                                    <p class="text-sm text-gray-500">ランチにぴったりのボリューム</p>
+                                    <p class="text-sm text-gray-600">ランチにぴったりのボリューム</p>
                                 </div>
-                                <span class="font-serif text-lg">¥850</span>
+                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap ml-4">¥850</span>
                             </li>
-                            <li class="flex justify-between border-b border-dashed border-gray-300 pb-2">
+                            <li class="flex justify-between items-start hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
                                 <div>
                                     <h4 class="font-bold text-lg">クラシックプリン</h4>
-                                    <p class="text-sm text-gray-500">固めの食感とカラメルソース</p>
+                                    <p class="text-sm text-gray-600">固めの食感とカラメルソース</p>
                                 </div>
-                                <span class="font-serif text-lg">¥400</span>
+                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap ml-4">¥400</span>
                             </li>
                         </ul>
                     </div>
@@ -236,16 +428,71 @@
             </div>
         </section>
 
+        <!-- Reviews Section -->
+        <section class="order-5 py-20 bg-white">
+            <div class="container mx-auto max-w-5xl px-4">
+                <div class="text-center mb-16 scroll-reveal">
+                    <span class="text-brand-accent font-serif tracking-widest text-sm block mb-2">VOICE</span>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold">お客様の声</h2>
+                    <div class="w-12 h-0.5 bg-brand-accent mx-auto mt-6"></div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 scroll-reveal">
+                    <div class="bg-brand-bg rounded-xl p-6 shadow-sm border border-gray-100">
+                        <div class="review-stars text-lg mb-3" aria-label="5つ星中5つ星">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            「初めて訪れた時から虜になりました。豆の香りが店内に広がっていて、一口飲んだ瞬間に違いがわかります。毎週末の楽しみです。」
+                        </p>
+                        <div class="flex items-center gap-3 pt-4 border-t border-gray-200">
+                            <div class="w-10 h-10 rounded-full bg-brand-accent/20 flex items-center justify-center text-brand-accent font-bold">T</div>
+                            <div>
+                                <p class="font-bold text-sm">田中さん</p>
+                                <p class="text-xs text-gray-600">常連のお客様</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-brand-bg rounded-xl p-6 shadow-sm border border-gray-100">
+                        <div class="review-stars text-lg mb-3" aria-label="5つ星中5つ星">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            「チーズケーキとオリジナルブレンドの組み合わせが最高です。木のぬくもりを感じる空間で、つい長居してしまいます。」
+                        </p>
+                        <div class="flex items-center gap-3 pt-4 border-t border-gray-200">
+                            <div class="w-10 h-10 rounded-full bg-brand-accent/20 flex items-center justify-center text-brand-accent font-bold">S</div>
+                            <div>
+                                <p class="font-bold text-sm">鈴木さん</p>
+                                <p class="text-xs text-gray-600">月2回ご来店</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-brand-bg rounded-xl p-6 shadow-sm border border-gray-100">
+                        <div class="review-stars text-lg mb-3" aria-label="5つ星中4つ星">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            「リモートワークでよく利用しています。Wi-Fiも電源もあり、コーヒーは美味しく、居心地が良いので作業がはかどります。」
+                        </p>
+                        <div class="flex items-center gap-3 pt-4 border-t border-gray-200">
+                            <div class="w-10 h-10 rounded-full bg-brand-accent/20 flex items-center justify-center text-brand-accent font-bold">M</div>
+                            <div>
+                                <p class="font-bold text-sm">山本さん</p>
+                                <p class="text-xs text-gray-600">フリーランス</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Shop Info Section -->
-        <section id="shop" class="order-4 py-20 md:py-32 px-4 bg-brand-bg">
+        <section id="shop" class="order-6 py-20 md:py-32 px-4 bg-brand-bg">
             <div class="container mx-auto max-w-5xl">
-                <div class="text-center mb-16">
+                <div class="text-center mb-16 scroll-reveal">
                     <span class="text-brand-accent font-serif tracking-widest text-sm block mb-2">INFORMATION</span>
                     <h2 class="text-3xl md:text-4xl font-serif font-bold">店舗情報</h2>
                     <div class="w-12 h-0.5 bg-brand-accent mx-auto mt-6"></div>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-8 bg-white p-8 rounded-lg shadow-sm">
+                <div class="grid md:grid-cols-2 gap-8 bg-white p-8 rounded-lg shadow-sm scroll-reveal">
                     <div class="space-y-6">
                         <div>
                             <h3 class="font-bold mb-2 text-lg">Cafe Aroma (カフェ アロマ)</h3>
@@ -283,16 +530,16 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="order-5 py-20 px-4 bg-white mb-20 md:mb-0">
+        <section id="contact" class="order-7 py-20 px-4 bg-white mb-20 md:mb-0">
             <div class="container mx-auto max-w-2xl">
-                <div class="text-center mb-16">
+                <div class="text-center mb-16 scroll-reveal">
                     <span class="text-brand-accent font-serif tracking-widest text-sm block mb-2">CONTACT</span>
                     <h2 class="text-3xl md:text-4xl font-serif font-bold">お問い合わせ</h2>
                     <div class="w-12 h-0.5 bg-brand-accent mx-auto mt-6"></div>
-                    <p class="mt-4 text-gray-500">ご予約や貸切に関するお問い合わせはこちらから</p>
+                    <p class="mt-4 text-gray-600">ご予約や貸切に関するお問い合わせはこちらから</p>
                 </div>
 
-                <form id="contact-form" action="https://formspree.io/f/xbddjzvr" method="POST" class="space-y-6">
+                <form id="contact-form" action="https://formspree.io/f/xbddjzvr" method="POST" class="space-y-6 scroll-reveal">
                     <!-- 
                      重要: Formspreeを初めて使用する場合、一度このフォームから送信すると
                      「Activate this form」というメールが届きます。そのメール内のリンクをクリックして
@@ -321,10 +568,10 @@
                     <div id="form-status"
                         class="hidden text-center p-4 rounded-md bg-green-50 text-green-800 font-medium"></div>
 
-                    <div class="text-center pb-8"> <!-- Added padding bottom for mobile keyboard safety -->
-                        <button type="submit"
+                    <div class="text-center pb-8">
+                        <button type="submit" id="submit-btn"
                             class="bg-brand-dark text-white px-10 py-3 rounded-full hover:bg-opacity-90 transition-all shadow-md transform hover:scale-105">
-                            送信する
+                            <span class="btn-text">送信する</span>
                         </button>
                     </div>
                 </form>
@@ -333,15 +580,74 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-brand-dark text-white py-8 text-center">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-serif font-bold mb-4">Cafe Aroma</h2>
-            <div class="flex justify-center gap-6 mb-6">
-                <a href="#" class="hover:text-brand-accent transition-colors">Instagram</a>
-                <a href="#" class="hover:text-brand-accent transition-colors">Twitter</a>
-                <a href="#" class="hover:text-brand-accent transition-colors">Facebook</a>
+    <footer class="bg-brand-dark text-white pt-16 pb-8">
+        <div class="container mx-auto max-w-5xl px-4">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <!-- About -->
+                <div>
+                    <h2 class="text-2xl font-serif font-bold mb-4">Cafe Aroma</h2>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        厳選された豆を自家焙煎し、一杯一杯丁寧にハンドドリップで淹れるこだわりのカフェ。日常の喧騒を忘れて、至福のひとときをお過ごしください。
+                    </p>
+                </div>
+
+                <!-- Hours -->
+                <div>
+                    <h3 class="font-bold text-lg mb-4">営業時間</h3>
+                    <dl class="text-sm text-gray-300 space-y-2">
+                        <div class="flex justify-between">
+                            <dt>平日</dt>
+                            <dd>8:00 - 20:00</dd>
+                        </div>
+                        <div class="flex justify-between">
+                            <dt>土日祝</dt>
+                            <dd>9:00 - 21:00</dd>
+                        </div>
+                        <div class="flex justify-between">
+                            <dt>定休日</dt>
+                            <dd>水曜日</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="font-bold text-lg mb-4">アクセス</h3>
+                    <!-- TODO: 本番前に実際の住所・電話番号に差し替えてください -->
+                    <address class="text-sm text-gray-300 not-italic space-y-2">
+                        <p>〒150-0000<br>東京都渋谷区神南1-1-1</p>
+                        <p>Tel: <a href="tel:03-1234-5678" class="hover:text-brand-accent transition-colors">03-1234-5678</a></p>
+                        <p>渋谷駅ハチ公口より徒歩10分</p>
+                    </address>
+                </div>
             </div>
-            <p class="text-sm text-gray-400">&copy; 2026 Cafe Aroma. All Rights Reserved.</p>
+
+            <!-- Divider -->
+            <div class="border-t border-white/20 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <!-- SNS Links -->
+                    <!-- TODO: 各SNSの実際のURLに差し替えてください -->
+                    <div class="flex gap-5">
+                        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-accent transition-colors" aria-label="Instagram">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                            </svg>
+                        </a>
+                        <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-accent transition-colors" aria-label="X (Twitter)">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-accent transition-colors" aria-label="Facebook">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <p class="text-sm text-gray-400">&copy; 2026 Cafe Aroma. All Rights Reserved.</p>
+                </div>
+            </div>
         </div>
     </footer>
 
