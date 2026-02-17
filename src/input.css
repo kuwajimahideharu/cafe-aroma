@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+/* ============================
+   Custom Theme (Tailwind v4)
+   ============================ */
+@theme {
+  --color-brand-dark: #4a3b32;
+  --color-brand-light: #8c7b70;
+  --color-brand-accent: #c9a66b;
+  --color-brand-bg: #fdfbf7;
+  --font-sans: "Noto Sans JP", sans-serif;
+  --font-serif: "Shippori Mincho", serif;
+}
+
+/* ============================
+   Source files to scan
+   ============================ */
+@source "../index.html";
+@source "../js/**/*.js";
+
+/* ============================
+   Hero Background
+   ============================ */
+.hero-bg {
+    background-color: #4a3b32;
+    background-image: url('../images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+/* ============================
+   Skip Link (Accessibility)
+   ============================ */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+    background: #4a3b32;
+    color: #fff;
+    transition: top 0.2s;
+}
+.skip-link:focus {
+    top: 0;
+}
+
+/* ============================
+   Focus Visible Indicator
+   ============================ */
+*:focus-visible {
+    outline: 2px solid #c9a66b;
+    outline-offset: 2px;
+}
+
+/* ============================
+   Scroll Reveal Animation
+   ============================ */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================
+   Gallery Grid
+   ============================ */
+.gallery-item {
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+.gallery-item img {
+    transition: transform 0.6s ease;
+}
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+/* ============================
+   Review Stars
+   ============================ */
+.review-stars {
+    color: #c9a66b;
+    letter-spacing: 2px;
+}
+
+/* ============================
+   Form Loading State
+   ============================ */
+.btn-loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+.spinner {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================
+   Back to Top Button
+   ============================ */
+#back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+#back-to-top:hover {
+    background-color: #c9a66b;
+}
+
+/* ============================
+   Active Nav Link
+   ============================ */
+.nav-link.active {
+    color: #c9a66b;
+    border-bottom: 2px solid #c9a66b;
+    padding-bottom: 2px;
+}

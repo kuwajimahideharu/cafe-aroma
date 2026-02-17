@@ -23,10 +23,13 @@
     <meta name="twitter:description" content="厳選された豆を自家焙煎。至福の一杯をお届けするこだわりのカフェです。">
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80">
 
-    <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+    <!-- Tailwind CSS (Local Build) -->
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,107 +37,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;600&display=swap"
         rel="stylesheet">
-
-    <!-- Configuration for Tailwind to use custom fonts and colors -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            dark: '#4a3b32', // Deep coffee brown
-                            light: '#8c7b70', // Lighter brown
-                            accent: '#c9a66b', // Gold/Ochre
-                            bg: '#fdfbf7', // Off-white/Beige
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['"Noto Sans JP"', 'sans-serif'],
-                        serif: ['"Shippori Mincho"', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .hero-bg {
-            background-color: #4a3b32;
-            background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1600&q=75');
-            background-size: cover;
-            background-position: center;
-            background-blend-mode: overlay;
-        }
-
-        /* Skip link */
-        .skip-link {
-            position: absolute;
-            top: -100%;
-            left: 0;
-            z-index: 100;
-            padding: 0.5rem 1rem;
-            background: #4a3b32;
-            color: #fff;
-            transition: top 0.2s;
-        }
-        .skip-link:focus {
-            top: 0;
-        }
-
-        /* Focus visible indicator */
-        *:focus-visible {
-            outline: 2px solid #c9a66b;
-            outline-offset: 2px;
-        }
-
-        /* Scroll reveal animation */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .scroll-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Gallery grid */
-        .gallery-item {
-            overflow: hidden;
-            border-radius: 0.5rem;
-        }
-        .gallery-item img {
-            transition: transform 0.6s ease;
-        }
-        .gallery-item:hover img {
-            transform: scale(1.08);
-        }
-
-        /* Review card */
-        .review-stars {
-            color: #c9a66b;
-            letter-spacing: 2px;
-        }
-
-        /* Form loading state */
-        .btn-loading {
-            pointer-events: none;
-            opacity: 0.7;
-        }
-        .spinner {
-            display: inline-block;
-            width: 1rem;
-            height: 1rem;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-top-color: #fff;
-            border-radius: 50%;
-            animation: spin 0.6s linear infinite;
-            vertical-align: middle;
-            margin-right: 0.5rem;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-    </style>
 
     <!-- JSON-LD 構造化データ -->
     <script type="application/ld+json">
@@ -216,10 +118,10 @@
 
             <!-- Desktop Nav -->
             <nav class="hidden md:flex gap-8 text-sm font-medium tracking-wide" aria-label="メインナビゲーション">
-                <a href="#concept" class="hover:text-brand-accent transition-colors">こだわり</a>
-                <a href="#menu" class="hover:text-brand-accent transition-colors">メニュー</a>
-                <a href="#shop" class="hover:text-brand-accent transition-colors">店舗情報</a>
-                <a href="#contact" class="hover:text-brand-accent transition-colors">お問い合わせ</a>
+                <a href="#concept" class="nav-link hover:text-brand-accent transition-colors">こだわり</a>
+                <a href="#menu" class="nav-link hover:text-brand-accent transition-colors">メニュー</a>
+                <a href="#shop" class="nav-link hover:text-brand-accent transition-colors">店舗情報</a>
+                <a href="#contact" class="nav-link hover:text-brand-accent transition-colors">お問い合わせ</a>
             </nav>
 
             <!-- Mobile Menu Button -->
@@ -292,7 +194,7 @@
                     </div>
                     <div
                         class="order-1 md:order-2 h-80 bg-gray-200 rounded-lg overflow-hidden shadow-lg relative group">
-                        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=800&q=75"
+                        <img src="images/concept.jpg"
                             alt="Cafe Aromaでのハンドドリップコーヒーの抽出の様子"
                             loading="lazy"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
@@ -312,27 +214,27 @@
 
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4 scroll-reveal">
                     <div class="gallery-item aspect-square shadow-md">
-                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=500&q=75"
+                        <img src="images/gallery-cappuccino.jpg"
                             alt="淹れたてのカプチーノ" loading="lazy" class="w-full h-full object-cover">
                     </div>
                     <div class="gallery-item aspect-square shadow-md">
-                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=500&q=75"
+                        <img src="images/gallery-interior.jpg"
                             alt="温かみのある店内の様子" loading="lazy" class="w-full h-full object-cover">
                     </div>
                     <div class="gallery-item aspect-square shadow-md">
-                        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=500&q=75"
+                        <img src="images/gallery-beans.jpg"
                             alt="こだわりのコーヒー豆" loading="lazy" class="w-full h-full object-cover">
                     </div>
                     <div class="gallery-item aspect-square shadow-md">
-                        <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=500&q=75"
+                        <img src="images/gallery-latte-art.jpg"
                             alt="美しいラテアート" loading="lazy" class="w-full h-full object-cover">
                     </div>
                     <div class="gallery-item aspect-square shadow-md">
-                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=500&q=75"
+                        <img src="images/gallery-sweets.jpg"
                             alt="自家製スイーツ" loading="lazy" class="w-full h-full object-cover">
                     </div>
                     <div class="gallery-item aspect-square shadow-md">
-                        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=500&q=75"
+                        <img src="images/gallery-counter.jpg"
                             alt="落ち着いたカウンター席" loading="lazy" class="w-full h-full object-cover">
                     </div>
                 </div>
@@ -355,34 +257,51 @@
                             <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
                             Coffee & Drinks
                         </h3>
-                        <ul class="space-y-5">
-                            <li class="flex justify-between items-start border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
-                                <div>
-                                    <h4 class="font-bold text-lg">オリジナルブレンド</h4>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-4 border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
+                                <img src="images/gallery-cappuccino.jpg" alt="オリジナルブレンド" loading="lazy"
+                                    class="w-16 h-16 rounded-lg object-cover flex-shrink-0">
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                                        <h4 class="font-bold text-base">オリジナルブレンド</h4>
+                                        <span class="text-xs bg-brand-accent text-white px-2 py-0.5 rounded-full">おすすめ</span>
+                                    </div>
                                     <p class="text-sm text-gray-600">酸味と苦味のバランスが取れた一杯</p>
                                 </div>
-                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap ml-4">¥550</span>
+                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap">¥550</span>
                             </li>
-                            <li class="flex justify-between items-start border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
-                                <div>
-                                    <h4 class="font-bold text-lg">本日のシングルオリジン</h4>
+                            <li class="flex items-center gap-4 border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
+                                <img src="images/gallery-beans.jpg" alt="本日のシングルオリジン" loading="lazy"
+                                    class="w-16 h-16 rounded-lg object-cover flex-shrink-0">
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                                        <h4 class="font-bold text-base">本日のシングルオリジン</h4>
+                                        <span class="text-xs bg-green-600 text-white px-2 py-0.5 rounded-full">季節限定</span>
+                                    </div>
                                     <p class="text-sm text-gray-600">日替わりで楽しむ世界のコーヒー</p>
                                 </div>
-                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap ml-4">¥650</span>
+                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap">¥650</span>
                             </li>
-                            <li class="flex justify-between items-start border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
-                                <div>
-                                    <h4 class="font-bold text-lg">自家製カフェラテ</h4>
+                            <li class="flex items-center gap-4 border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
+                                <img src="images/gallery-latte-art.jpg" alt="自家製カフェラテ" loading="lazy"
+                                    class="w-16 h-16 rounded-lg object-cover flex-shrink-0">
+                                <div class="flex-1 min-w-0">
+                                    <h4 class="font-bold text-base mb-1">自家製カフェラテ</h4>
                                     <p class="text-sm text-gray-600">濃厚なエスプレッソとミルク</p>
                                 </div>
-                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap ml-4">¥600</span>
+                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap">¥600</span>
                             </li>
-                            <li class="flex justify-between items-start hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
-                                <div>
-                                    <h4 class="font-bold text-lg">水出しアイスコーヒー</h4>
+                            <li class="flex items-center gap-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
+                                <img src="images/gallery-counter.jpg" alt="水出しアイスコーヒー" loading="lazy"
+                                    class="w-16 h-16 rounded-lg object-cover flex-shrink-0">
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                                        <h4 class="font-bold text-base">水出しアイスコーヒー</h4>
+                                        <span class="text-xs bg-green-600 text-white px-2 py-0.5 rounded-full">季節限定</span>
+                                    </div>
                                     <p class="text-sm text-gray-600">8時間かけて抽出したクリアな味わい</p>
                                 </div>
-                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap ml-4">¥600</span>
+                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap">¥600</span>
                             </li>
                         </ul>
                     </div>
@@ -393,34 +312,45 @@
                             <span class="w-2 h-2 rounded-full bg-brand-accent"></span>
                             Food & Sweets
                         </h3>
-                        <ul class="space-y-5">
-                            <li class="flex justify-between items-start border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
-                                <div>
-                                    <h4 class="font-bold text-lg">自家製チーズケーキ</h4>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-4 border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
+                                <img src="images/gallery-sweets.jpg" alt="自家製チーズケーキ" loading="lazy"
+                                    class="w-16 h-16 rounded-lg object-cover flex-shrink-0">
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                                        <h4 class="font-bold text-base">自家製チーズケーキ</h4>
+                                        <span class="text-xs bg-brand-accent text-white px-2 py-0.5 rounded-full">おすすめ</span>
+                                    </div>
                                     <p class="text-sm text-gray-600">コーヒーとの相性抜群</p>
                                 </div>
-                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap ml-4">¥500</span>
+                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap">¥500</span>
                             </li>
-                            <li class="flex justify-between items-start border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
-                                <div>
-                                    <h4 class="font-bold text-lg">厚切りバタートースト</h4>
+                            <li class="flex items-center gap-4 border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
+                                <img src="images/gallery-interior.jpg" alt="厚切りバタートースト" loading="lazy"
+                                    class="w-16 h-16 rounded-lg object-cover flex-shrink-0">
+                                <div class="flex-1 min-w-0">
+                                    <h4 class="font-bold text-base mb-1">厚切りバタートースト</h4>
                                     <p class="text-sm text-gray-600">国産小麦使用、外はサクッと中はふんわり</p>
                                 </div>
-                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap ml-4">¥450</span>
+                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap">¥450</span>
                             </li>
-                            <li class="flex justify-between items-start border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
-                                <div>
-                                    <h4 class="font-bold text-lg">アボカドとサーモンのサンド</h4>
+                            <li class="flex items-center gap-4 border-b border-dashed border-gray-200 pb-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
+                                <img src="images/gallery-counter.jpg" alt="アボカドとサーモンのサンド" loading="lazy"
+                                    class="w-16 h-16 rounded-lg object-cover flex-shrink-0">
+                                <div class="flex-1 min-w-0">
+                                    <h4 class="font-bold text-base mb-1">アボカドとサーモンのサンド</h4>
                                     <p class="text-sm text-gray-600">ランチにぴったりのボリューム</p>
                                 </div>
-                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap ml-4">¥850</span>
+                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap">¥850</span>
                             </li>
-                            <li class="flex justify-between items-start hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
-                                <div>
-                                    <h4 class="font-bold text-lg">クラシックプリン</h4>
+                            <li class="flex items-center gap-4 hover:bg-brand-bg/50 -mx-3 px-3 py-2 rounded transition-colors">
+                                <img src="images/gallery-cappuccino.jpg" alt="クラシックプリン" loading="lazy"
+                                    class="w-16 h-16 rounded-lg object-cover flex-shrink-0">
+                                <div class="flex-1 min-w-0">
+                                    <h4 class="font-bold text-base mb-1">クラシックプリン</h4>
                                     <p class="text-sm text-gray-600">固めの食感とカラメルソース</p>
                                 </div>
-                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap ml-4">¥400</span>
+                                <span class="font-serif text-lg text-brand-accent font-semibold whitespace-nowrap">¥400</span>
                             </li>
                         </ul>
                     </div>
@@ -650,6 +580,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="ページトップへ戻る"
+        class="fixed bottom-8 right-6 z-50 w-12 h-12 rounded-full bg-brand-dark text-white shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+        </svg>
+    </button>
 
     <!-- Scripts -->
     <script src="js/main.js"></script>

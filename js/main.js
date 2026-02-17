@@ -144,6 +144,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================
+    // Active Nav Link (Intersection Observer)
+    // ========================================
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+
+    if (navLinks.length && sections.length && 'IntersectionObserver' in window) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+                    if (active) active.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '-80px 0px -40% 0px'
+        });
+
+        sections.forEach(section => sectionObserver.observe(section));
+
+        // ページ最上部に戻ったときはアクティブ状態をすべて解除
+        window.addEventListener('scroll', () => {
+            if (window.scrollY < 50) {
+                navLinks.forEach(link => link.classList.remove('active'));
+            }
+        }, { passive: true });
+    }
+
+    // ========================================
     // Hero Text Fade-in Animation
     // ========================================
     const fadeElements = document.querySelectorAll('.animate-fade-in-up');
@@ -157,6 +187,24 @@ document.addEventListener('DOMContentLoaded', () => {
             el.style.transform = 'translateY(0)';
         }, 100 + (index * 200));
     });
+
+    // ========================================
+    // Back to Top Button
+    // ========================================
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
     // ========================================
     // Scroll Reveal Animation (Intersection Observer)
