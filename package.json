@@ -6,7 +6,9 @@
   "scripts": {
     "build": "node node_modules/@tailwindcss/cli/dist/index.mjs -i ./src/input.css -o ./css/style.css --minify",
     "dev": "node node_modules/@tailwindcss/cli/dist/index.mjs -i ./src/input.css -o ./css/style.css --watch",
-    "favicon": "node scripts/generate-favicon.js"
+    "favicon": "node scripts/generate-favicon.js",
+    "webp": "node scripts/generate-webp.js",
+    "ogp": "node scripts/generate-ogp.js"
   },
   "repository": {
     "type": "git",
