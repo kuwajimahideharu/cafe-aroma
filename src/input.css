@@ -23,6 +23,7 @@
    ============================ */
 .hero-bg {
     background-color: #4a3b32;
+    background-image: url('../images/hero.jpg');
     background-image: image-set(
         url('../images/hero.webp') type("image/webp"),
         url('../images/hero.jpg') type("image/jpeg")
